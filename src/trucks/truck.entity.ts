@@ -1,11 +1,5 @@
 import { Entity, Column, PrimaryColumn } from 'typeorm';
-
-export type TruckStatus =
-  | 'Out Of Service'
-  | 'Loading'
-  | 'To Job'
-  | 'At Job'
-  | 'Returning';
+import type { TruckStatus } from './truck.schema';
 
 @Entity('trucks')
 export class Truck {

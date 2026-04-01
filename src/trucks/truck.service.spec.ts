@@ -2,7 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { BadRequestException, ConflictException, NotFoundException } from '@nestjs/common';
 import { TruckService } from './truck.service';
-import { Truck, TruckStatus } from './truck.entity';
+import { Truck } from './truck.entity';
+import type { TruckStatus } from './truck.schema';
 
 const makeTruck = (overrides: Partial<Truck> = {}): Truck => ({
   code: 'ABC123',

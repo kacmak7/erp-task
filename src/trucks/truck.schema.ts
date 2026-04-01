@@ -3,6 +3,15 @@ import { createZodDto } from 'nestjs-zod';
 
 const alphanumeric = /^[a-zA-Z0-9]+$/;
 
+export const TruckStatusEnum = z.enum([
+  'Out Of Service',
+  'Loading',
+  'To Job',
+  'At Job',
+  'Returning',
+]);
+export type TruckStatus = z.infer<typeof TruckStatusEnum>;
+
 const CreateTruckSchema = z.object({
   code: z.string().min(1).regex(alphanumeric, 'code must be alphanumeric'),
   name: z.string().min(1),
@@ -21,13 +30,7 @@ const TruckQuerySchema = z.object({
 });
 
 const UpdateTruckStatusSchema = z.object({
-  status: z.enum([
-    'Out Of Service',
-    'Loading',
-    'To Job',
-    'At Job',
-    'Returning',
-  ]),
+  status: TruckStatusEnum,
 });
 
 export class CreateTruckDto extends createZodDto(CreateTruckSchema) {}

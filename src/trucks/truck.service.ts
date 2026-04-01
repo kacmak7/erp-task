@@ -1,7 +1,8 @@
 import { Injectable, NotFoundException, ConflictException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ILike, Repository } from 'typeorm';
-import { Truck, TruckStatus } from './truck.entity';
+import { Truck } from './truck.entity';
+import type { TruckStatus } from './truck.schema';
 import { CreateTruckDto, UpdateTruckDto, TruckQueryDto, UpdateTruckStatusDto } from './truck.schema';
 
 const ALLOWED_TRANSITIONS: Record<TruckStatus, TruckStatus[]> = {
